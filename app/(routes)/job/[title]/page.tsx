@@ -1,9 +1,3 @@
-function Page({
-  params: { title },
-}: {
-  params: { title: string | undefined };
-}) {
-  return <div>Job: {title}</div>;
+export default function Page({ params }: { params: { title: string } }) {
+  return <h1>Job: {params.title}</h1>;
 }
-
-export default Page;
