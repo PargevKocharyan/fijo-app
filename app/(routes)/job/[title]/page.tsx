@@ -1,6 +1,8 @@
-function Page(
-  { params: { title } }: { params: { title: string | undefined } }
-) {
+function Page({
+  params: { title },
+}: {
+  params: { title: string | undefined };
+}) {
   return <div>Job: {title}</div>;
 }
 
