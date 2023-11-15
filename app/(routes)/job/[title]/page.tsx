@@ -1,9 +1,5 @@
-import React from "react";
-
 function Page(
-  { params: { title } }: { params: { title: string } } = {
-    params: { title: "No Results" },
-  }
+  { params: { title } }: { params: { title: string | undefined } }
 ) {
   return <div>Job: {title}</div>;
 }
