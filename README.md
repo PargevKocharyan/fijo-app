@@ -25,10 +25,10 @@ Here're some of the project's best features:
 
 <h2>🛠️ Installation Steps:</h2>
 
-1. Clone the dev branch on you local machine:
+1. Clone the repo on you local machine:
 
 ```
-git clone -b dev https://github.com/PargevKocharyan/fijo-app.git
+git clone https://github.com/PargevKocharyan/fijo-app.git
 ```
 
 2. Rename `.env.local.example` to `.env.local` and update the following:
