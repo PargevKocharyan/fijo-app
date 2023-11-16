@@ -12,20 +12,20 @@
 
 Here're some of the project's best features:
 
-- Responsive design
-- Signup/Login
-- Candidate dashboard
-- Company dashboard
-- Update and add posts
-- Update and download candidate’s CV
-- Apply to jobs
-- Tracking jobs’ views applicants and much more through dashboard
-- Add to favorite
-- Flexibility by finding what you’re interested with filters and search
+- [ ] Responsive design
+- [ ] Signup/Login
+- [ ] Candidate dashboard
+- [ ] Company dashboard
+- [ ] Update and add posts
+- [ ] Update and download candidate’s CV
+- [ ] Apply to jobs
+- [ ] Tracking jobs’ views applicants and much more through dashboard
+- [ ] Add to favorite
+- [ ] Flexibility by finding what you’re interested with filters and search
 
 <h2>🛠️ Installation Steps:</h2>
 
-1. Clone the repository:
+1. Clone the repo on you local machine:
 
 ```
 git clone https://github.com/PargevKocharyan/fijo-app.git
