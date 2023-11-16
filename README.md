@@ -25,13 +25,13 @@ Here're some of the project's best features:
 
 <h2>🛠️ Installation Steps:</h2>
 
-<p>1. Clone the repository:</p>
+1. Clone the repository:
 
 ```
 git clone https://github.com/PargevKocharyan/fijo-app.git
 ```
 
-<p>2. Rename `.env.local.example` to `.env.local` and update the following:</p>
+2. Rename `.env.local.example` to `.env.local` and update the following:
 
 ```
    NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
@@ -40,7 +40,7 @@ git clone https://github.com/PargevKocharyan/fijo-app.git
 
 Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
 
-<p>3. You can now run the Next.js local development server:</p>
+3. You can now run the Next.js local development server:
 
 ```bash
   npm run dev
