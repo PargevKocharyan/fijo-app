@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8d73dde-fc09-4153-b334-e59dd6cf8eda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/globals.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +52,7 @@
       <updated>1700166464503</updated>
       <workItem from="1700166466299" duration="1972000" />
       <workItem from="1700210646065" duration="1019000" />
-      <workItem from="1700212050678" duration="905000" />
+      <workItem from="1700212050678" duration="2056000" />
     </task>
     <servers />
   </component>

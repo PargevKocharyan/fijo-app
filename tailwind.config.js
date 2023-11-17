@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      fijoRed: '#FF4243',
-      fijoBackground: '#F6F6F6',
-      fijoGray: '#7C7B7B',
-      fijoWhite: '#FFFFFF',
-      fijoGreen: '#49BB00',
-      fijoBlack: '#212121',
+      red: 'rgb(var(--red) / <alpha-value>)',
+      background: 'rgb(var(--background) / <alpha-value>)',
+      gray: 'rgb(var(--gray) / <alpha-value>)',
+      white: 'rgb(var(--white) / <alpha-value>)',
+      green: 'rgb(var(--green) / <alpha-value>)',
+      black: 'rgb(var(--black) / <alpha-value>)',
     },
   },
   plugins: [],
