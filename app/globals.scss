@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --red: 255 66 67;
+        --background: 246 246 246;
+        --gray: 124 123 123;
+        --white: 255 255 255;
+        --green: 73 187 0;
+        --black: 33 33 33;
+    }
+}
+
