@@ -14,6 +14,9 @@ module.exports = {
         green: "rgb(var(--green) / <alpha-value>)",
         black: "rgb(var(--black) / <alpha-value>)",
       },
+      container: {
+        center: true,
+      },
     },
   },
   plugins: [],
