@@ -1,7 +1,8 @@
 import React from "react";
+import { Button } from "./button";
 
 function Header() {
-  return <div>header</div>;
+  return <header></header>;
 }
 
 export default Header;
