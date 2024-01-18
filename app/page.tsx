@@ -1,4 +1,4 @@
-import Header from "@/components/ui/header";
+import Header from "@/components/general/header";
 
 export default async function Index() {
   return (
