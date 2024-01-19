@@ -37,13 +37,15 @@ const Footer = () => {
       <div className="container flex justify-between mx-auto">
         {/* Contact info */}
         <div className="flex flex-col gap-5">
-          <Image
-            src="/img/logo.svg"
-            alt="logo"
-            width={28}
-            height={26}
-            className="cursor-pointer"
-          />
+          <Link href="/">
+            <Image
+              src="/img/logo.svg"
+              alt="logo"
+              width={28}
+              height={26}
+              className="cursor-pointer"
+            />
+          </Link>
           <p>560 Mission St, San Francisco, CA 94105, United States</p>
           <p>+1 209-825-2862</p>
           <p className="font-semibold font-sm">

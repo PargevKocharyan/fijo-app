@@ -5,13 +5,16 @@ function Header() {
   return (
     <div className="bg-white">
       <header className="container h-[35px] mx-auto flex items-center justify-between pt-8">
-        <Image
-          src="/img/logo.svg"
-          alt="logo"
-          width={28}
-          height={26}
-          className="cursor-pointer"
-        />
+        <Link href="/">
+          <Image
+            src="/img/logo.svg"
+            alt="logo"
+            width={28}
+            height={26}
+            className="cursor-pointer"
+          />
+        </Link>
+
         <nav className="flex items-center gap-8 font-semibold">
           <Link href="/jobs" className="hover:text-accent">
             Jobs
