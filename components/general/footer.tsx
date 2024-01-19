@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="flex flex-col gap-5">
           <Link href="/">
             <Image
-              src="/img/logo.svg"
+              src="/img/Logo.svg"
               alt="logo"
               width={28}
               height={26}

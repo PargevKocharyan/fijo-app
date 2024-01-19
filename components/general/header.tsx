@@ -7,7 +7,7 @@ function Header() {
       <header className="container h-[35px] mx-auto flex items-center justify-between pt-8">
         <Link href="/">
           <Image
-            src="/img/logo.svg"
+            src="/img/Logo.svg"
             alt="logo"
             width={28}
             height={26}
