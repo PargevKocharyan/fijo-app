@@ -9,9 +9,9 @@ const HeroSection = () => {
       className="pt-10 bg-gradient-to-t from-background to-white"
       aria-label="Hero Section"
     >
-      <div className="container flex items-center justify-between mx-auto mt-20">
+      <div className="container flex flex-col items-center justify-between gap-0 mx-auto mt-20 text-center lg:text-left lg:gap-10 lg:flex-row">
         {/* Text block */}
-        <div className="flex flex-col max-w-sm gap-5">
+        <div className="flex flex-col items-center max-w-sm gap-5 lg:justify-center lg:items-start">
           <h1 className="text-5xl font-semibold">
             A curated job board for <span className="text-accent">hire</span>{" "}
             and <span className="text-accent">land</span> your first job

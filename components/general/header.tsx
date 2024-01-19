@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 function Header() {
   return (
     <div className="bg-white">
-      <header className="container h-[35px] mx-auto flex items-center justify-between pt-8">
+      <header className="container flex items-center justify-between h-full pt-8 mx-auto">
         <Link href="/">
           <Image
             src="/img/Logo.svg"

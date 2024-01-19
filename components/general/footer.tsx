@@ -31,9 +31,9 @@ const socialMedia = [
   },
 ];
 
-const Footer = () => {
+const Footer = ({ color = "background" }: { color?: string }) => {
   return (
-    <footer className="py-10 mt-10 font-sans">
+    <footer className={`py-10 mt-24 font-sans bg-${color}`}>
       <div className="container flex justify-between mx-auto">
         {/* Contact info */}
         <div className="flex flex-col gap-5">
@@ -60,7 +60,7 @@ const Footer = () => {
           <Link href="/">Terms & Conditions</Link>
           <div className="flex gap-5">
             {socialMedia.map((item, index) => (
-              <Link href={item.link} key={index}>
+              <a target="_blank" href={item.link} key={index}>
                 <Image
                   src={item.icon}
                   alt="social media"
@@ -68,7 +68,7 @@ const Footer = () => {
                   height={24}
                   className="cursor-pointer"
                 />
-              </Link>
+              </a>
             ))}
           </div>
         </div>
