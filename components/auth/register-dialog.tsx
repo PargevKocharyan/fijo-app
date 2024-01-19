@@ -20,9 +20,7 @@ import {
   FormMessage,
 } from "../ui/form";
 import { useState } from "react";
-import Image from "next/image";
 import { BriefcaseIcon, ContactIcon } from "lucide-react";
-import { cn } from "@/utils/shadcn/utils";
 
 const formSchema = z
   .object({
@@ -120,7 +118,10 @@ const RegisterDialog = () => {
               <div className="flex justify-between">
                 {/* Employer */}
                 <button
-                  onClick={() => setRole("employer")}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setRole("employer");
+                  }}
                   className={
                     role === "employer" ? selectedStyle : unselectedStyle
                   }
@@ -133,7 +134,10 @@ const RegisterDialog = () => {
                 </button>
                 {/* Candidate */}
                 <button
-                  onClick={() => setRole("candidate")}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setRole("candidate");
+                  }}
                   className={
                     role === "candidate" ? selectedStyle : unselectedStyle
                   }
