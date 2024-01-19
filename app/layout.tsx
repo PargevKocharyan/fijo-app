@@ -1,3 +1,4 @@
+import Footer from "@/components/general/footer";
 import "./globals.scss";
 import localFont from "next/font/local";
 
@@ -69,6 +70,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${gilroy.variable}`}>
         <main className="font-sans">{children}</main>
+        <Footer />
       </body>
     </html>
   );

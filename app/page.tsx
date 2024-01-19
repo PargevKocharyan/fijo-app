@@ -1,9 +1,9 @@
-import Header from "@/components/general/header";
+import Landing from "@/components/general/landing";
 
 export default async function Index() {
   return (
     <>
-      <Header />
+      <Landing />
     </>
   );
 }
