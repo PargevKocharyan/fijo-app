@@ -5,6 +5,7 @@ import CompaniesSection from "../routes/index/landing/companies-section";
 import FeaturesSection from "../routes/index/landing/features-section";
 import AchievementsSection from "../routes/index/landing/achievements-section";
 import FeaturedJobs from "../routes/index/landing/featured-jobs";
+import Footer from "./footer";
 
 function Landing() {
   return (
@@ -15,6 +16,7 @@ function Landing() {
       <FeaturesSection />
       <AchievementsSection />
       <FeaturedJobs />
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import Footer from "@/components/general/footer";
 import "./globals.scss";
 import localFont from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const gilroy = localFont({
   src: [
@@ -69,8 +69,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${gilroy.variable}`}>
-        <main className="font-sans">{children}</main>
-        <Footer />
+        <main className="font-sans">
+          {children}
+          <SpeedInsights />
+        </main>
       </body>
     </html>
   );

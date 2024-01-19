@@ -1,3 +1,4 @@
+import RegisterDialog from "@/components/auth/register-dialog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
@@ -19,7 +20,7 @@ const HeroSection = () => {
             Phasellus eleifend in purus sed molestie. Sed elementum blandit
             porttitor.
           </p>
-          <Button className="w-fit">Get Started</Button>
+          <RegisterDialog />
         </div>
         {/* Image */}
         <Image

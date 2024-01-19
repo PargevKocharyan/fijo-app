@@ -33,7 +33,6 @@ function Header() {
           <button className="font-semibold hover:text-accent">
             Sign up / Log in
           </button>
-          {/* <Button>Post a job</Button> */}
         </div>
       </header>
     </div>
