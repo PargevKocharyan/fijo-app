@@ -1,6 +1,8 @@
 import Footer from "@/components/general/footer";
 import Header from "@/components/general/header";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import React from "react";
 
@@ -99,16 +101,24 @@ function Page() {
               ))}
             </div>
           </div>
-          <div className="w-full p-5 text-lg bg-white rounded-lg">
-            <h3 className="text-2xl font-semibold">Send a message</h3>
-            <p>
-              Share your thoughts or inquires with us, we'll be happy to assist
-              with anything in mind. We reply within 24 hours.
-            </p>
+          <div className="flex flex-col justify-between flex-1 w-full p-5 text-lg bg-white rounded-lg">
+            <div className="flex flex-col">
+              <h3 className="text-2xl font-semibold">Send a message</h3>
+              <p>
+                Share your thoughts or inquires with us, we'll be happy to
+                assist with anything in mind. We reply within 24 hours.
+              </p>
+            </div>
+
             <form className="flex flex-col" action="">
               <Input variant="underline" type="email" placeholder="Email" />
               <Input variant="underline" type="text" placeholder="Name" />
-              <Input variant="underline" type="text" placeholder="Message" />
+              <Textarea
+                className="resize-none"
+                variant="underline"
+                placeholder="Message"
+              />
+              <Button className="self-end mt-4">Send</Button>
             </form>
           </div>
         </div>
