@@ -1,12 +1,13 @@
 "use client";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTrigger,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
-import { DialogClose, DialogTitle } from "@radix-ui/react-dialog";
+import { DialogTitle } from "@radix-ui/react-dialog";
 import { Input } from "../ui/input";
 
 import * as z from "zod";
@@ -20,23 +21,16 @@ import {
   FormMessage,
 } from "../ui/form";
 import { useState } from "react";
-import { BriefcaseIcon, ContactIcon } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useToast } from "../ui/use-toast";
-import LoginDialog from "./login-dialog";
+import RegisterDialog from "./register-dialog";
 
-const formSchema = z
-  .object({
-    email: z.string().email(),
-    password: z.string().min(8),
-    confirmPassword: z.string().min(8),
-  })
-  .refine((values) => values.password === values.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
+const formSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});
 
-const RegisterDialog = ({ children }: { children: React.ReactNode }) => {
+const LoginDialog = ({ children }: { children: React.ReactNode }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -57,22 +51,16 @@ const RegisterDialog = ({ children }: { children: React.ReactNode }) => {
   // Handle form submission and sign up
   async function onSubmit(fields: z.infer<typeof formSchema>) {
     // Sign up user
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: fields.email,
       password: fields.password,
-      options: {
-        emailRedirectTo: "/auth/confirm",
-        data: {
-          type: role,
-        },
-      },
     });
 
     // Handle success
     if (data) {
       toast({
         title: "Success",
-        description: "Please check your email to continue",
+        description: "Wellcome to FIJO!",
         variant: "default",
       });
       location.reload();
@@ -95,7 +83,7 @@ const RegisterDialog = ({ children }: { children: React.ReactNode }) => {
       <DialogContent className="bg-white">
         <div className="mx-auto w-72">
           <DialogHeader className="flex">
-            <DialogTitle>Register</DialogTitle>
+            <DialogTitle>Log In</DialogTitle>
           </DialogHeader>
           <Form {...form}>
             <form
@@ -136,63 +124,12 @@ const RegisterDialog = ({ children }: { children: React.ReactNode }) => {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="confirmPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        variant="underline"
-                        placeholder="Confirm Password"
-                        type="password"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              {/* User type */}
-              <div className="flex justify-between">
-                {/* Employer */}
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setRole("employer");
-                  }}
-                  className={
-                    role === "employer" ? selectedStyle : unselectedStyle
-                  }
-                >
-                  <BriefcaseIcon />
-                  <div className="text-left">
-                    <h4 className="font-bold">Employer</h4>
-                    <p className="text-xs">Looking to hire for my company</p>
-                  </div>
-                </button>
-                {/* Candidate */}
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    setRole("candidate");
-                  }}
-                  className={
-                    role === "candidate" ? selectedStyle : unselectedStyle
-                  }
-                >
-                  <ContactIcon />
-                  <div className="text-left ">
-                    <h4 className="font-bold">Candidate</h4>
-                    <p className="text-xs">Looking for new job opportunities</p>
-                  </div>
-                </button>
-              </div>
+              <div className=""></div>
               <div className="flex flex-col gap-3">
-                <Button type="submit">Register</Button>
-                <LoginDialog>
-                  <Button variant="ghost">Log In</Button>
-                </LoginDialog>
+                <Button type="submit">Log In</Button>
+                <RegisterDialog>
+                  <Button variant="ghost">Register</Button>
+                </RegisterDialog>
               </div>
             </form>
           </Form>
@@ -202,4 +139,4 @@ const RegisterDialog = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default RegisterDialog;
+export default LoginDialog;

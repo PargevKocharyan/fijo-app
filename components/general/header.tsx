@@ -1,7 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-function Header() {
+import { readUserSession } from "../auth/actions";
+import LogoutDialog from "../auth/logout-dialog";
+import LoginDialog from "../auth/login-dialog";
+import { Button } from "../ui/button";
+
+export const dynamicParams = "for dynamic";
+
+async function Header() {
+  // Read user session
+  const { data: session, error } = await readUserSession();
+
   return (
     <div className="bg-white">
       <header className="container flex items-center justify-between h-full pt-8 mx-auto">
@@ -30,9 +39,13 @@ function Header() {
           </Link>
         </nav>
         <div className="flex gap-5">
-          <button className="font-semibold hover:text-accent">
-            Sign up / Log in
-          </button>
+          {session.session?.user ? (
+            <LogoutDialog />
+          ) : (
+            <LoginDialog>
+              <Button variant="ghost">Sign up / Log in</Button>
+            </LoginDialog>
+          )}
         </div>
       </header>
     </div>

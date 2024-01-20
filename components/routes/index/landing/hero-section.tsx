@@ -20,7 +20,9 @@ const HeroSection = () => {
             Phasellus eleifend in purus sed molestie. Sed elementum blandit
             porttitor.
           </p>
-          <RegisterDialog />
+          <RegisterDialog>
+            <Button className="w-fit">Get Started</Button>
+          </RegisterDialog>
         </div>
         {/* Image */}
         <Image
