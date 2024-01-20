@@ -4,10 +4,9 @@ import { redirect } from "next/navigation";
 async function Page() {
   const userSession = await readUserSession();
 
-  // if (userSession.data.session?.user.user_metadata.role != "employer") {
-  //   redirect("/");
-  // }
-
+  if (userSession.data.session?.user.user_metadata.type !== "employer") {
+    redirect("/");
+  }
   return (
     <>
       <h1>Employer Dashboard</h1>

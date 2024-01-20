@@ -26,9 +26,8 @@ const links = [
 
 async function Header({ activeLink }: { activeLink?: string }) {
   // Read user session
-  const { data: session, error } = await readUserSession();
+  const userSession = await readUserSession();
 
-  console.log(session.session?.user.user_metadata?.type);
   return (
     <div className="bg-white">
       <header className="container flex items-center justify-between h-full pt-8 mx-auto">
@@ -60,7 +59,7 @@ async function Header({ activeLink }: { activeLink?: string }) {
         </nav>
 
         <div className="flex gap-5">
-          {session.session?.user.user_metadata?.type === "employer" ? (
+          {userSession.data.session?.user.user_metadata?.type === "employer" ? (
             <div className="flex gap-5">
               <EmployerAvatar>
                 <Avatar className="border-2 border-foreground">
@@ -72,7 +71,8 @@ async function Header({ activeLink }: { activeLink?: string }) {
               </EmployerAvatar>
               <Button>Post a job</Button>
             </div>
-          ) : session.session?.user.user_metadata?.type === "candidate" ? (
+          ) : userSession.data.session?.user.user_metadata?.type ===
+            "candidate" ? (
             <div className="flex gap-5">
               <CandidateAvatar>
                 <Avatar className="border-2 border-foreground">

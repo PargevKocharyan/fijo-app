@@ -42,7 +42,7 @@ const HeroSection = () => {
         {/* Arrow */}
         <a href="#companies">
           <Image
-            className="absolute left-0 right-0 mx-auto bottom-4"
+            className="absolute left-0 right-0 mx-auto animate-bounce bottom-4"
             alt="arrow-down"
             src="\img\landing-page\arrow-down.svg"
             width={24}

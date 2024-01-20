@@ -18,27 +18,33 @@ import {
 } from "../ui/dropdown-menu";
 import { createClient } from "@/utils/supabase/client";
 import { useToast } from "../ui/use-toast";
+import Link from "next/link";
 
 const menuItems = [
   {
     icon: <GripIcon size={24} />,
     label: "Overview",
+    link: "/dashboard/employer",
   },
   {
     icon: <BadgeInfoIcon size={24} />,
     label: "Company Info",
+    link: "/dashboard/employer",
   },
   {
     icon: <BriefcaseIcon size={24} />,
     label: "Company Jobs",
+    link: "/dashboard/employer",
   },
   {
     icon: <StarIcon size={24} />,
     label: "Saved Resumes",
+    link: "/dashboard/employer",
   },
   {
     icon: <SlidersIcon size={24} />,
     label: "Settings",
+    link: "/dashboard/employer",
   },
 ];
 
@@ -89,7 +95,7 @@ const EmployerAvatar = ({
             className="flex gap-3 p-2 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground"
           >
             {menuItem.icon}
-            <span>{menuItem.label}</span>
+            <Link href={menuItem.link}>{menuItem.label}</Link>
           </DropdownMenuItem>
         ))}
         <DropdownMenuItem
