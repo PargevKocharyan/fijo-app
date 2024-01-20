@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/toaster";
 
 const gilroy = localFont({
   src: [
-    // Normal
     {
       path: "./fonts/gilroy/Gilroy-Bold.woff2",
       weight: "700",

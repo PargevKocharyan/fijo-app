@@ -13,7 +13,7 @@ import { Button } from "../ui/button";
 import { createClient } from "@/utils/supabase/client";
 import { useToast } from "../ui/use-toast";
 
-const LogoutDialog = () => {
+const LogoutDialog = ({ children }: { children: React.ReactNode }) => {
   const supabase = createClient();
   const { toast } = useToast();
 
@@ -32,9 +32,7 @@ const LogoutDialog = () => {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="ghost">Logout</Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Sign Out</DialogTitle>
