@@ -6,7 +6,7 @@ import React from "react";
 function Page() {
   return (
     <>
-      <Header />
+      <Header activeLink="About" />
       <section
         aria-label="Hero Section"
         className="py-16 font-semibold text-center bg-white"

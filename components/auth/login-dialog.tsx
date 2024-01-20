@@ -58,12 +58,12 @@ const LoginDialog = ({ children }: { children: React.ReactNode }) => {
 
     // Handle success
     if (data) {
+      location.reload();
       toast({
         title: "Success",
         description: "Wellcome to FIJO!",
         variant: "default",
       });
-      location.reload();
     }
 
     // Handle errors

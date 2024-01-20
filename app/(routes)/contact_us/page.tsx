@@ -36,7 +36,7 @@ const socialMedia = [
 function Page() {
   return (
     <>
-      <Header />
+      <Header activeLink="Contact Us" />
       <section
         aria-label="Hero Section"
         className="py-16 font-semibold text-center bg-white"

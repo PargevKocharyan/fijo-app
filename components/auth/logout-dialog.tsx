@@ -27,7 +27,6 @@ const LogoutDialog = () => {
         description: error.message,
         variant: "destructive",
       });
-      return;
     }
   };
 

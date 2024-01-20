@@ -5,9 +5,15 @@ import LogoutDialog from "../auth/logout-dialog";
 import LoginDialog from "../auth/login-dialog";
 import { Button } from "../ui/button";
 
-export const dynamicParams = "for dynamic";
+// Navigation links
+const links = [
+  { href: "/jobs", label: "Jobs" },
+  { href: "/companies", label: "Companies" },
+  { href: "/about", label: "About" },
+  { href: "/contact_us", label: "Contact Us" },
+];
 
-async function Header() {
+async function Header({ activeLink }: { activeLink?: string }) {
   // Read user session
   const { data: session, error } = await readUserSession();
 
@@ -25,22 +31,29 @@ async function Header() {
         </Link>
 
         <nav className="flex items-center gap-8 font-semibold">
-          <Link href="/jobs" className="hover:text-accent">
-            Jobs
-          </Link>
-          <Link href="/companies" className="hover:text-accent">
-            Companies
-          </Link>
-          <Link href="/about" className="hover:text-accent">
-            About
-          </Link>
-          <Link href="/contact-us" className="hover:text-accent">
-            Contact Us
-          </Link>
+          {
+            // Navigation links
+            links.map(({ href, label }, idx) => (
+              <Link
+                className={
+                  activeLink === label
+                    ? `text-accent`
+                    : "text-foreground hover:text-accent"
+                }
+                key={idx}
+                href={href}
+              >
+                {label}
+              </Link>
+            ))
+          }
         </nav>
         <div className="flex gap-5">
-          {session.session?.user ? (
-            <LogoutDialog />
+          {session.session?.user.user_metadata.type === "employer" ? (
+            <div className="flex gap-5">
+              <LogoutDialog />
+              <Button>Post a job</Button>
+            </div>
           ) : (
             <LoginDialog>
               <Button variant="ghost">Sign up / Log in</Button>

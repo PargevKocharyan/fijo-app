@@ -75,7 +75,6 @@ const RegisterDialog = ({ children }: { children: React.ReactNode }) => {
         description: "Please check your email to continue",
         variant: "default",
       });
-      location.reload();
     }
 
     // Handle errors
