@@ -21,6 +21,7 @@ import {
 } from "../ui/form";
 import { useState } from "react";
 import { BriefcaseIcon, ContactIcon } from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 const formSchema = z
   .object({
@@ -38,16 +39,33 @@ const RegisterDialog = () => {
     resolver: zodResolver(formSchema),
   });
 
-  function onSubmit(fields: z.infer<typeof formSchema>) {
-    console.log(fields);
-  }
-
   // State for user type
   const [role, setRole] = useState<"employer" | "candidate">("employer");
   const unselectedStyle =
     "flex w-[49%] gap-2 p-3 border border-foreground rounded-xl bg-white text-foreground";
   const selectedStyle =
     "flex w-[49%] gap-2 p-3 border border-foreground rounded-xl bg-foreground text-white";
+
+  // Add supabase client
+  const supabase = createClient();
+
+  // Handle form submission and sign up
+  async function onSubmit(fields: z.infer<typeof formSchema>) {
+    // Sign up user
+    const { data, error } = await supabase.auth.signUp({
+      email: fields.email,
+      password: fields.password,
+      options: {
+        emailRedirectTo: "/auth/confirm",
+        data: {
+          type: role,
+        },
+      },
+    });
+
+    console.log(data, error);
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
