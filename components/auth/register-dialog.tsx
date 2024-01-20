@@ -22,6 +22,7 @@ import {
 import { useState } from "react";
 import { BriefcaseIcon, ContactIcon } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
+import { useToast } from "../ui/use-toast";
 
 const formSchema = z
   .object({
@@ -49,6 +50,9 @@ const RegisterDialog = () => {
   // Add supabase client
   const supabase = createClient();
 
+  // Toast for errors and messages
+  const { toast } = useToast();
+
   // Handle form submission and sign up
   async function onSubmit(fields: z.infer<typeof formSchema>) {
     // Sign up user
@@ -63,7 +67,23 @@ const RegisterDialog = () => {
       },
     });
 
-    console.log(data, error);
+    // Handle success
+    if (data) {
+      toast({
+        title: "Success",
+        description: "Please check your email to continue",
+        variant: "default",
+      });
+    }
+
+    // Handle errors
+    if (error) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
   }
 
   return (

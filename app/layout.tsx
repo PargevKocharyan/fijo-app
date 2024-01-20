@@ -1,6 +1,7 @@
 import "./globals.scss";
 import localFont from "next/font/local";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Toaster } from "@/components/ui/toaster";
 
 const gilroy = localFont({
   src: [
@@ -72,6 +73,7 @@ export default function RootLayout({
         <main className="font-sans">
           {children}
           <SpeedInsights />
+          <Toaster />
         </main>
       </body>
     </html>
