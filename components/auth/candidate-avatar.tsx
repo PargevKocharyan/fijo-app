@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  BadgeInfoIcon,
-  BriefcaseIcon,
-  ChevronDown,
-  GripIcon,
-  LogOutIcon,
-  SlidersIcon,
-  StarIcon,
-} from "lucide-react";
+import { ChevronDown, LogOutIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,27 +8,10 @@ import {
   DropdownMenuTrigger,
   DropdownMenuItem,
 } from "../ui/dropdown-menu";
-import { createClient } from "@/utils/supabase/client";
-import { useToast } from "../ui/use-toast";
 
-const menuItems = [
-  {
-    icon: <GripIcon size={24} />,
-    label: "Overview",
-  },
-  {
-    icon: <BadgeInfoIcon size={24} />,
-    label: "My applications",
-  },
-  {
-    icon: <BriefcaseIcon size={24} />,
-    label: "Saved Jobs",
-  },
-  {
-    icon: <SlidersIcon size={24} />,
-    label: "Settings",
-  },
-];
+import { menuItemsCandidate } from "@/utils/config/menu-items";
+import LogoutClient from "./logout-client";
+import Link from "next/link";
 
 const CandidateAvatar = ({
   children,
@@ -45,22 +20,6 @@ const CandidateAvatar = ({
   children: React.ReactNode;
   name?: string;
 }) => {
-  const supabase = createClient();
-  const { toast } = useToast();
-
-  const signOutHandler = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
-    } else {
-      location.reload();
-    }
-  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className=" focus:outline-none">
@@ -79,21 +38,22 @@ const CandidateAvatar = ({
             </p>
           </div>
         </DropdownMenuLabel>
-        {menuItems.map((menuItem, index) => (
-          <DropdownMenuItem
-            key={index}
-            className="flex gap-3 p-2 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground"
-          >
-            {menuItem.icon}
-            <span>{menuItem.label}</span>
+        {menuItemsCandidate.map((menuItem, index) => (
+          <DropdownMenuItem className="py-2" key={index}>
+            <Link
+              className="flex gap-3 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground"
+              href={menuItem.link}
+            >
+              {menuItem.icon}
+              {menuItem.label}
+            </Link>
           </DropdownMenuItem>
         ))}
-        <DropdownMenuItem
-          onSelect={signOutHandler}
-          className="flex gap-3 p-2 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground"
-        >
-          <LogOutIcon size={24} />
-          <span>Logout</span>
+        <DropdownMenuItem className="py-2">
+          <LogoutClient className="flex gap-3 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground">
+            <LogOutIcon size={24} />
+            <span>Logout</span>
+          </LogoutClient>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

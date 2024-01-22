@@ -19,34 +19,8 @@ import {
 import { createClient } from "@/utils/supabase/client";
 import { useToast } from "../ui/use-toast";
 import Link from "next/link";
-
-const menuItems = [
-  {
-    icon: <GripIcon size={24} />,
-    label: "Overview",
-    link: "/dashboard/employer",
-  },
-  {
-    icon: <BadgeInfoIcon size={24} />,
-    label: "Company Info",
-    link: "/dashboard/employer",
-  },
-  {
-    icon: <BriefcaseIcon size={24} />,
-    label: "Company Jobs",
-    link: "/dashboard/employer",
-  },
-  {
-    icon: <StarIcon size={24} />,
-    label: "Saved Resumes",
-    link: "/dashboard/employer",
-  },
-  {
-    icon: <SlidersIcon size={24} />,
-    label: "Settings",
-    link: "/dashboard/employer",
-  },
-];
+import LogoutClient from "./logout-client";
+import { menuItemsEmployer } from "@/utils/config/menu-items";
 
 const EmployerAvatar = ({
   children,
@@ -55,22 +29,6 @@ const EmployerAvatar = ({
   children: React.ReactNode;
   name?: string;
 }) => {
-  const supabase = createClient();
-  const { toast } = useToast();
-
-  const signOutHandler = async () => {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-      toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
-      });
-    } else {
-      location.reload();
-    }
-  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className=" focus:outline-none">
@@ -89,21 +47,22 @@ const EmployerAvatar = ({
             </p>
           </div>
         </DropdownMenuLabel>
-        {menuItems.map((menuItem, index) => (
-          <DropdownMenuItem
-            key={index}
-            className="flex gap-3 p-2 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground"
-          >
-            {menuItem.icon}
-            <Link href={menuItem.link}>{menuItem.label}</Link>
+        {menuItemsEmployer.map((menuItem, index) => (
+          <DropdownMenuItem className="py-2" key={index}>
+            <Link
+              className="flex gap-3 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground"
+              href={menuItem.link}
+            >
+              {menuItem.icon}
+              {menuItem.label}
+            </Link>
           </DropdownMenuItem>
         ))}
-        <DropdownMenuItem
-          onSelect={signOutHandler}
-          className="flex gap-3 p-2 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground"
-        >
-          <LogOutIcon size={24} />
-          <span>Logout</span>
+        <DropdownMenuItem className="py-2">
+          <LogoutClient className="flex gap-3 text-sm font-semibold cursor-pointer text-foreground opacity-70 hover:opacity-100 hover:text-foreground">
+            <LogOutIcon size={24} />
+            <span>Logout</span>
+          </LogoutClient>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
