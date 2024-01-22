@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { readUserSession } from "../auth/actions";
-import LogoutDialog from "../auth/logout-dialog";
 import LoginDialog from "../auth/login-dialog";
 import { Button } from "../ui/button";
 import EmployerAvatar from "../auth/employer-avatar";
@@ -12,9 +11,19 @@ import {
   ArrowDownIcon,
   ChevronDown,
   Globe2Icon,
+  MenuIcon,
   User2Icon,
 } from "lucide-react";
 import CandidateAvatar from "../auth/candidate-avatar";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
+import EmployerSheet from "../auth/sheets/employer-sheet";
+import CandidateSheet from "../auth/sheets/candidate-sheet";
 
 // Navigation links
 const links = [
@@ -41,7 +50,7 @@ async function Header({ activeLink }: { activeLink?: string }) {
           />
         </Link>
 
-        <nav className="flex items-center gap-8 font-semibold">
+        <nav className="items-center hidden gap-8 font-semibold md:flex">
           {/* Navigation links */}
           {links.map(({ href, label }, idx) => (
             <Link
@@ -58,32 +67,39 @@ async function Header({ activeLink }: { activeLink?: string }) {
           ))}
         </nav>
 
-        <div className="flex gap-5">
+        <div className="gap-5">
           {userSession.data.session?.user.user_metadata?.type === "employer" ? (
-            <div className="flex gap-5">
-              <EmployerAvatar>
-                <Avatar className="border-2 border-foreground">
-                  <AvatarImage src="" alt="@shadcn" />
-                  <AvatarFallback>
-                    <Globe2Icon size={24} />
-                  </AvatarFallback>
-                </Avatar>
-              </EmployerAvatar>
-              <Button>Post a job</Button>
-            </div>
+            <>
+              <div className="hidden gap-5 md:flex">
+                <EmployerAvatar>
+                  <Avatar className="border-2 border-foreground">
+                    <AvatarImage src="" alt="@shadcn" />
+                    <AvatarFallback>
+                      <Globe2Icon size={24} />
+                    </AvatarFallback>
+                  </Avatar>
+                </EmployerAvatar>
+                <Button>Post a job</Button>
+              </div>
+              {/* Burger menu for small Screens */}
+              <EmployerSheet name="Google Inc." />
+            </>
           ) : userSession.data.session?.user.user_metadata?.type ===
             "candidate" ? (
-            <div className="flex gap-5">
-              <CandidateAvatar>
-                <Avatar className="border-2 border-foreground">
-                  <AvatarImage src="" alt="@shadcn" />
-                  <AvatarFallback>
-                    <User2Icon size={24} />
-                  </AvatarFallback>
-                </Avatar>
-              </CandidateAvatar>
-              <Button>Update CV</Button>
-            </div>
+            <>
+              <div className="hidden gap-5 md:flex">
+                <CandidateAvatar>
+                  <Avatar className="border-2 border-foreground">
+                    <AvatarImage src="" alt="@shadcn" />
+                    <AvatarFallback>
+                      <User2Icon size={24} />
+                    </AvatarFallback>
+                  </Avatar>
+                </CandidateAvatar>
+                <Button>Update CV</Button>
+              </div>
+              <CandidateSheet name="John Doe" />
+            </>
           ) : (
             <LoginDialog>
               <Button variant="ghost">Sign up / Log in</Button>
