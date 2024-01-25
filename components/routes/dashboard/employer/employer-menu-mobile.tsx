@@ -6,9 +6,10 @@ import Link from "next/link";
 import { cn } from "@/utils/shadcn/utils";
 import Image from "next/image";
 import LogoutClient from "@/components/auth/logout-client";
-import { LogOutIcon } from "lucide-react";
+import { LogOutIcon, MenuIcon } from "lucide-react";
+import { SheetContent, SheetTrigger, Sheet } from "@/components/ui/sheet";
 
-export default function EmployerMenu() {
+export default function EmployerMenuMonile() {
   const pathname = usePathname();
 
   const menuContent = (
@@ -49,8 +50,13 @@ export default function EmployerMenu() {
   );
 
   return (
-    <div className="hidden h-screen p-5 pr-10 bg-white w-60 xl:flex">
-      {menuContent}
-    </div>
+    <Sheet>
+      <SheetTrigger className="flex xl:hidden">
+        <MenuIcon size={24} />
+      </SheetTrigger>
+      <SheetContent className="font-sans" side="left">
+        {menuContent}
+      </SheetContent>
+    </Sheet>
   );
 }
