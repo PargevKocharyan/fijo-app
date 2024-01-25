@@ -9,7 +9,7 @@ const HeroSection = () => {
       className="pt-10 bg-gradient-to-t from-background to-white"
       aria-label="Hero Section"
     >
-      <div className="container flex flex-col items-center justify-between gap-0 mx-auto mt-20 text-center lg:text-left lg:gap-10 lg:flex-row">
+      <div className="container flex flex-col-reverse items-center justify-between gap-10 mx-auto mt-10 text-center lg:mt-20 lg:text-left lg:flex-row">
         {/* Text block */}
         <div className="flex flex-col items-center max-w-sm gap-5 lg:justify-center lg:items-start">
           <h1 className="text-5xl font-semibold">
